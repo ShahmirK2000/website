@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Shahmir Khan</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
+    <meta name="description" content="Shahmir Khan's Website">
+    <meta name="keywords" content="Shahmir, Shahmir Khan">
+    <meta name="author" content="Shahmir Khan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1 class="nametitle">Shahmir Khan</h1>
+    <nav class="nav-links">
+        <a href="#introduction">Introduction</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="page2.html">Page 2</a>
+    </nav>
+    <div class="center-container">
+        <div class="hello-container">
+            <h1 class="hello">Hello!</h1>
+        </div>
+    </div>
+    
+    <div class="divider">
+        <div class="line"></div>
+        <a href="https://www.linkedin.com/in/shahmir-khan-8a8339185/" target="_blank">
+            <img src="images/linkedin.jpg" alt="Linkedin Profile" class="divider-image">
+        </a>
+        <a href="https://github.com/ShahmirK2000" target="_blank">
+            <img src="images/github.png" alt="Github Account" class="divider-image">
+        </a>
+        <div class="line"></div>
+    </div>
+    
+    <div class="profile-container">
+        <img class="profileimage" src="images/Profile Picture.jpg" height="300" alt="This is a picture of me from 2024" title="Taken in Philadelphia in 2024">
+    </div>
+
+    <h1 id="introduction">Introduction</h1>
+    <p class="introductionp"> 
+        Hi, my name is Shahmir Mahmud Khan, I was born and raised in upstate New York, and am super passionate about learning. I am currently 24 years old. My hobbies include coding, traveling,
+        playing guitar, competing in esports, and more. My career goal is to improve upon software in many different industries including
+        healthcare, education, robotics, etc. I am educated in many different areas such as programming, software development techniques, model-driven development, 
+        biology, chemistry, anatomy, physiology, and other medical sciences.
+    </p>
+
+    <h1 id="education">Education</h1>
+    <p class="introductionp">
+        <strong>B.S. Biomedical Science - University at Buffalo (2024)</strong>
+    </p>
+
+    <p class="introductionp">
+        <strong>M.S. Software Engineering - Rochester Institute of Technology (2026)</strong>
+    </p>
+
+    <p class = "introductionp">
+        I recieved my <strong>Bachelor's of Science in Biomedical Science</strong> degree from the University at Buffalo. I have always
+        been passionate about medicinal sciences, and chose to study Biomedical Science as a stepping point for me to become a praticing physician.
+        However, during my undergraduate education, I was very involved in my former First Robotics team in high school. The more I mentored the students 
+        there, the more I realized that my true passion was for software development. During this time, I had started to study for the MCAT, or the Medical College Admission Test.
+        I decided to stop studying for the entrance exam for medical schools, and started applying to schools that would allow me to step into the world of software development. 
+        I was accepted into the Rochester Institute of Technology, and am currently pursuing a <strong>Master's of Science in Software Engineering</strong>. My
+        goal is to use this degree, with my pre-existing skills that I obtained during my undergraduate program to improve upon software, not only in medicine, but many
+        industries thoughout my career.
+    </p>
+
+
+    <h1 id="skills">Skills</h1>
+    <p class="introductionp">
+        
+    </p>
+
+    <script>
+        const words = ['Hello!', 'Hallo!', 'السلام عليكم', 'Bonjour!', 'नमस्ते', 'привет!', 'こんにちは', '你好'];
+        let index = 0; 
+        const helloElement = document.querySelector('.hello');
+        const typingSpeed = 100; 
+        const deletingSpeed = 100; 
+        const pauseBetweenWords = 1000; 
+    
+        function changeText() {
+            const currentWord = words[index];
+            let charIndex = 0; 
+    
+            
+            function typeLetters() {
+                if (charIndex < currentWord.length) {
+                    helloElement.textContent += currentWord[charIndex];
+                    charIndex++;
+                    setTimeout(typeLetters, typingSpeed); 
+                } else {
+                    
+                    setTimeout(deleteLetters, pauseBetweenWords);
+                }
+            }
+    
+            // Function to delete letters
+            function deleteLetters() {
+                if (charIndex >= 0) {
+                    helloElement.textContent = currentWord.slice(0, charIndex);
+                    charIndex--;
+                    setTimeout(deleteLetters, deletingSpeed); 
+                } else {
+                    
+                    index = (index + 1) % words.length; 
+                    setTimeout(changeText, pauseBetweenWords);
+                }
+            }
+    
+            typeLetters();
+        }
+    
+        
+        helloElement.textContent = ''; 
+        changeText(); 
+    </script>
+
+</body>
+
+</html>

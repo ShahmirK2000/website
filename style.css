@@ -1,0 +1,117 @@
+body {
+    background-color: black;
+    font-family: "Signika Negative";
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+/* Center the hello text */
+.center-container {
+    text-align: center;
+    flex-grow: 1; 
+}
+
+.hello-container {
+    min-height: 50px; 
+    height: 50px; 
+    line-height: 50px; 
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 20px;
+}
+
+.hello {
+    display: inline-block;
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 24px;
+    color: white;
+    position: relative;
+}
+
+.hello::after {
+    content: '|'; 
+    position: absolute;
+    right: -6px; 
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.nametitle {
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-family: "Signika Negative";
+}
+
+p {
+    color: gray;
+    text-align: center;
+}
+
+.profile-container {
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+}
+
+.profileimage {
+    display: block; 
+    height: 300px; 
+    margin: 20px 0; 
+}
+
+
+.divider {
+    display: flex;
+    align-items: center; 
+    width: 100%; 
+    margin: 20px 0; 
+}
+
+.line {
+    flex-grow: 1; 
+    height: 2px; 
+    background-color: white; 
+}
+
+.divider-image {
+    height: 40px; 
+    margin: 0 10px; 
+    display: block; 
+}
+
+.introductionp{
+    align-items: center;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.nav-links {
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+.nav-links a {
+    color: white; 
+    text-decoration: none; 
+    margin: 0 10px; 
+    font-size: 18px; 
+}
+
+.nav-links a:hover {
+    text-decoration: underline; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
