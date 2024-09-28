@@ -147,3 +147,60 @@ html {
     display: block;
     margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+    body {
+        padding: 0 15px;
+    }
+
+    .nametitle {
+        font-size: 1.8rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    .carousel-inner img {
+        width: 100%;
+        max-width: none;
+        height: auto;
+    }
+
+    .divider-image {
+        width: 50px;
+    }
+
+    .hello {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-inner img {
+        width: 100%;
+        height: auto;
+    }
+
+    .nametitle {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+    }
+
+    #map {
+        height: 300px;
+    }
+
+    .hello {
+        font-size: 16px;
+    }
+
+    .divider-image {
+        width: 40px;
+    }
+}
