@@ -115,3 +115,28 @@ p {
 html {
     scroll-behavior: smooth;
 }
+
+.skill-container {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px; /* Set a maximum width for the skill container */
+}
+
+.skill-bar {
+    background-color: #ddd; /* Background for the empty part of the bar */
+    height: 20px; /* Height of the bar */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-level {
+    background-color: #4caf50; /* The color of the filled part of the bar */
+    height: 100%; /* Fill the entire height of the bar */
+    border-radius: 10px 0 0 10px;
+    transition: width 0.5s ease-in-out; /* Smooth transition when width changes */
+}
+
+.skill-container p {
+    margin: 0 0 5px 0; /* Add some space between the text and the bar */
+    color: white; /* Set text color */
+}
