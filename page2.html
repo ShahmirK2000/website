@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>page 2</title>
+        <title>My Travels</title>
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
@@ -9,8 +9,303 @@
         <meta name="keywords" content="Shahmir, Shahmir Khan">
         <meta name="author" content="Shahmir Khan">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <style>
+            #map {
+                height: 500px; /* Set the height of the map */
+                width: 100%; /* Set the width of the map */
+            }
+            body {
+                background-color: black; 
+                color: white;
+                font-family: 'Signika Negative', sans-serif;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+
+            .slideshow-container {
+                max-width: 1000px;
+                position: relative;
+                margin: auto;
+            }
+
+            .slide {
+                display: none;
+                position: relative;
+            }
+
+            .slide img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+            }
+
+            .caption {
+                color: white;
+                font-size: 16px;
+                padding: 10px;
+                text-align: center;
+                position: absolute;
+                bottom: 8px;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            }
+
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                width: auto;
+                padding: 16px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                transition: 0.6s ease;
+                user-select: none;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            .prev {
+                left: 0;
+                border-radius: 0 3px 3px 0;
+            }
+
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+
+            .prev:hover, .next:hover {
+                background-color: rgba(255, 255, 255, 0.8);
+                color: black;
+            }
+
+            .dot-container {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .dot {
+                cursor: pointer;
+                height: 15px;
+                width: 15px;
+                margin: 0 2px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+                transition: background-color 0.6s ease;
+            }
+
+            .active, .dot:hover {
+                background-color: white;
+            }
+        </style>
     </head>
 <body>
-    <h1>This is page 2</h1>
+    <h1 class="nametitle">Shahmir Khan</h1>
+    <nav class="nav-links">
+        <a href="index.html#introduction">Introduction</a>
+        <a href="index.html#education">Education</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#contactme">Contact Me</a>
+        <a href="index.html#extracurriculars">Extracurriculars</a>
+        <a href="page2.html">My Travels</a>
+    </nav>
+    <div class="center-container">
+        <div class="hello-container">
+            <h1 class="hello">Hello!</h1>
+        </div>
+    </div>
+    
+    <div class="divider">
+        <div class="line"></div>
+        <a href="https://www.linkedin.com/in/shahmir-khan-8a8339185/" target="_blank">
+            <img src="images/linkedin.jpg" alt="Linkedin Profile" class="divider-image">
+        </a>
+        <a href="https://github.com/ShahmirK2000" target="_blank">
+            <img src="images/github.png" alt="Github Account" class="divider-image">
+        </a>
+        <div class="line"></div>
+    </div>
+
+
+    <script>
+        const words = ['I\'ve been to Canada!', 'I\'ve been to the Bahamas!', 'I\'ve been to Germany!', 'I\'ve been to Jordan!', 'I\'ve been to Switzerland!', 'I\'ve been to Austria!', 'I\'ve been to Chicago!', 'I\'ve been to Pakistan!'];
+        let index = 0; 
+        const helloElement = document.querySelector('.hello');
+        const typingSpeed = 50; 
+        const deletingSpeed = 50; 
+        const pauseBetweenWords = 1000; 
+    
+        function changeText() {
+            const currentWord = words[index];
+            let charIndex = 0; 
+    
+            
+            function typeLetters() {
+                if (charIndex < currentWord.length) {
+                    helloElement.textContent += currentWord[charIndex];
+                    charIndex++;
+                    setTimeout(typeLetters, typingSpeed); 
+                } else {
+                    
+                    setTimeout(deleteLetters, pauseBetweenWords);
+                }
+            }
+    
+            // Function to delete letters
+            function deleteLetters() {
+                if (charIndex >= 0) {
+                    helloElement.textContent = currentWord.slice(0, charIndex);
+                    charIndex--;
+                    setTimeout(deleteLetters, deletingSpeed); 
+                } else {
+                    
+                    index = (index + 1) % words.length; 
+                    setTimeout(changeText, pauseBetweenWords);
+                }
+            }
+    
+            typeLetters();
+        }
+    
+        
+        helloElement.textContent = ''; 
+        changeText(); 
+    </script>
+
+    <h1>My Travel Map</h1>
+    <div id="map"></div>
+
+    <script>
+        const map = L.map('map', {
+            minZoom: 2,
+            maxZoom: 19,
+            maxBounds: [
+                [-85, -180],
+                [85, 180]
+            ],
+            maxBoundsViscosity: 1.0
+        }).setView([20, 0], 2); 
+    
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+    
+        const places = [
+            { coords: [40.7128, -74.0060], name: "New York, USA" }, 
+            { coords: [25.047983, -77.355415], name: "Nassau, Bahamas" }, 
+            { coords: [52.520008, 13.404954], name: "Berlin, Germany" }, 
+            { coords: [47.141041, 9.521450], name: "Vaduz, Liechtenstein" }, 
+            { coords: [31.520370, 74.358749], name: "Lahore, Pakistan" },
+            { coords: [25.204849, 55.270782], name: "Dubai, United Arab Emirates" }, 
+            { coords: [25.285446, 51.531040], name: "Doha, Qatar" }, 
+            { coords: [31.945368, 35.928371], name: "Amman, Jordan" }, 
+            { coords: [41.878113, -87.629799], name: "Chicago, USA" }, 
+            { coords: [32.776665, -96.796989], name: "Dallas, USA" }, 
+            { coords: [61.218056, -149.900284], name: "Anchorage, USA" }, 
+            { coords: [43.653225, -79.383186], name: "Toronto, Canada" }, 
+            { coords: [47.809490, 13.055010], name: "Salzburg, Austria" }, 
+            { coords: [52.229675, 21.012230], name: "Warsaw, Poland" }, 
+            { coords: [53.551086, 9.993682], name: "Hamburg, Germany" }, 
+            { coords: [39.099728, -94.578568], name: "Kansas City, USA" }, 
+            { coords: [28.538336, -81.379234], name: "Orlando, USA" }, 
+            { coords: [50.937531, 6.960279], name: "Cologne, Germany" }, 
+            { coords: [48.2081, 16.3713], name: "Vienna, Austria" }, 
+            { coords: [46.9480, 7.4474], name: "Bern, Switzerland" }, 
+            { coords: [33.6995, 73.0363], name: "Islamabad, Pakistan" }, 
+            { coords: [30.3285, 35.4444], name: "Petra, Jordan" }, 
+            { coords: [47.3742, 8.5396], name: "Zürich, Swizerland" } 
+
+        ];
+    
+        places.forEach(place => {
+            L.marker(place.coords).addTo(map)
+                .bindPopup(place.name) 
+                .openPopup();
+        });
+    </script>
+
+    <p class="introductionp">
+        This map includes some of the places I have been to around the world. I have a huge passion for traveling, and 
+        try to travel as much as I can in my free time. If you contact me, let me know where you have traveled to!
+    </p>
+
+    <h1>Travel Gallery</h1>
+
+    <p class="introductionp">These are just a few of the pictures that I have taken around the world</p>
+    <div class="slideshow-container">
+        <div class="slide">
+            <img src="images/Switzerland Pic.jpg" alt="Switzerland">
+            <div class="caption">Mountain climbing in Switzerland</div>
+        </div>
+
+        <div class="slide">
+            <img src="images/Dallas Pic.jpg" alt="Dallas">
+            <div class="caption">At Dreamhack Dallas</div>
+        </div>
+
+        <div class="slide">
+            <img src="images/Mountain Pic.JPG" alt="Mountain">
+            <div class="caption">View from the Alps</div>
+        </div>
+
+        <div class="slide">
+            <img src="images/Wedding Pic.jpg" alt="Wedding">
+            <div class="caption">A wedding in Amman, Jordan</div>
+        </div>
+
+        <div class="slide">
+            <img src="images/Petra Pic.jpg" alt="Petra">
+            <div class="caption">Ancient Petra, Jordan</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <br>
+
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+
 </body>
 </html>

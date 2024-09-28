@@ -7,7 +7,6 @@ body {
     align-items: center; 
 }
 
-/* Center the hello text */
 .center-container {
     text-align: center;
     flex-grow: 1; 
@@ -119,24 +118,32 @@ html {
 .skill-container {
     margin-bottom: 20px;
     width: 100%;
-    max-width: 600px; /* Set a maximum width for the skill container */
+    max-width: 600px; 
 }
 
 .skill-bar {
-    background-color: #ddd; /* Background for the empty part of the bar */
-    height: 20px; /* Height of the bar */
+    background-color: #ddd; 
+    height: 20px; 
     border-radius: 10px;
     overflow: hidden;
 }
 
 .skill-level {
-    background-color: #4caf50; /* The color of the filled part of the bar */
-    height: 100%; /* Fill the entire height of the bar */
+    background-color: #4caf50; 
+    height: 100%; 
     border-radius: 10px 0 0 10px;
-    transition: width 0.5s ease-in-out; /* Smooth transition when width changes */
+    transition: width 0.5s ease-in-out; 
 }
 
 .skill-container p {
-    margin: 0 0 5px 0; /* Add some space between the text and the bar */
-    color: white; /* Set text color */
+    margin: 0 0 5px 0; 
+    color: white; 
+}
+
+.carousel-inner img {
+    width: 100%;
+    max-width: 1000px; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
