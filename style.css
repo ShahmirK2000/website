@@ -203,4 +203,12 @@ html {
     .divider-image {
         width: 40px;
     }
+
+    
+    p {
+        text-align: left; 
+        margin: 0 auto; 
+        max-width: 90%; 
+        line-height: 1.5;
+    }
 }
