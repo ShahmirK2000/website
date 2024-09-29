@@ -175,6 +175,10 @@ html {
         font-size: 18px;
     }
 
+    .resume-button {
+        padding: 10px 50px;
+    }
+
 }
 
 @media (max-width: 480px) {
