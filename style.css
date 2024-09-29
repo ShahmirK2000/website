@@ -196,7 +196,7 @@ html {
     }
 
     .hello {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .divider-image {
@@ -205,7 +205,9 @@ html {
 
     p {
         text-align: left; 
-        margin: 0 auto; 
+        margin: 0 auto;
+        width: 100px;
+        float: left; 
         max-width: 90%; 
         line-height: 1.5; 
     }
