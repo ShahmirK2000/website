@@ -217,6 +217,10 @@ html {
         word-wrap: break-word; 
         max-width: 90%; 
     }
+
+    .resume-button {
+        padding: 10px 30px;
+    }
 }
 
 .resumebutton {
