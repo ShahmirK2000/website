@@ -176,7 +176,9 @@ html {
     }
 
     .resume-button {
-        padding: 10px 50px;
+        padding: 10px 50px; 
+        width: 100%;
+        box-sizing: border-box; 
     }
 
 }
@@ -220,6 +222,8 @@ html {
 
     .resume-button {
         padding: 10px 30px;
+        width: 100%; 
+        box-sizing: border-box;
     }
 }
 
